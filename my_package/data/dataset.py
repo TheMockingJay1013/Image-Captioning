@@ -21,7 +21,6 @@ class Dataset(object):
         #opening annotation file and reading it
         with jsonlines.open(annotation_file,'r') as jsonFile :
             self.jsonlist=[obj for obj in jsonFile]
-            print(self.jsonlist)
         
 
     def __len__(self):
@@ -53,10 +52,4 @@ class Dataset(object):
                 img = transform(img)
         return img
 
-if __name__=='__main__' :
-    dset=Dataset("data/annotations.jsonl") 
-    data=dset.__getann__(3)
-    path=data["url"]
-    img=dset.__transformitem__(path)
-    img.show()
 
